@@ -1,0 +1,40 @@
+{
+  "schema_version": 2,
+  "preset_version": 1,
+  "name": "ai-workflow-acceptance-python",
+  "preset": "python",
+  "repository": "zfynyhhxx/ai-workflow-acceptance-python",
+  "base_branch": "main",
+  "verification": {
+    "commands": [
+      {
+        "id": "python-tests",
+        "argv": [
+          "python3",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "cwd": ".",
+        "timeout": 180
+      }
+    ],
+    "write_directories": [],
+    "network": "none"
+  },
+  "rule_paths": [
+    "AGENTS.md",
+    ".workflow/project.json",
+    ".github/workflows"
+  ],
+  "acceptance_templates": {
+    "slug_v1": {
+      "source": ".workflow/acceptance/slug-python.txt",
+      "destination": "tests/test_slug.py",
+      "expected_red": "No module named 'demo.slug'"
+    }
+  }
+}
